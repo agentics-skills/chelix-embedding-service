@@ -1,0 +1,6 @@
+/target
+/result
+.env
+.env.*
+.envrc
+.DS_Store

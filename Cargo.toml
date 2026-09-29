@@ -1,0 +1,47 @@
+[workspace]
+members  = ["crates/embedding-service"]
+resolver = "2"
+
+[workspace.lints.rust]
+unsafe_code           = "deny"
+unused_qualifications = "deny"
+
+[workspace.lints.cargo]
+unused_dependencies = "deny"
+
+[workspace.lints.clippy]
+expect_used = "deny"
+unwrap_used = "deny"
+
+[workspace.package]
+edition      = "2024"
+license      = "MIT"
+repository   = "https://github.com/agentics-skills/chelix-embedding-service"
+rust-version = "1.95"
+version      = "0.1.0"
+
+[workspace.dependencies]
+anyhow             = "1"
+async-trait        = "0.1"
+axum               = "0.8"
+fd-lock            = "4"
+metrics            = "0.24.6"
+mistralrs          = { default-features = false, git = "https://github.com/ivan-mezentsev/mistralrs-embedding", tag = "v0.1.1", version = "0.1.1" }
+reqwest            = { features = ["json"], version = "0.13" }
+serde              = { features = ["derive"], version = "1" }
+serde_json         = { features = ["preserve_order"], version = "1" }
+sha2               = "0.10"
+tempfile           = "3"
+tokio              = { features = ["full"], version = "1" }
+tower              = "0.5"
+tracing            = "0.1"
+tracing-subscriber = { features = ["env-filter"], version = "0.3" }
+
+[profile.release]
+codegen-units = 1
+lto           = "thin"
+panic         = "abort"
+strip         = true
+
+[profile.dev]
+debug = "line-tables-only"

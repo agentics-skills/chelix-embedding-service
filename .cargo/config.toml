@@ -1,0 +1,6 @@
+# Enables the `[lints.cargo]` table, which carries the workspace's
+# `unused_dependencies` lint. Setting it here rather than passing `-Z
+# cargo-lints` on the command line is required for `cargo clippy`: clippy is an
+# external subcommand that re-invokes Cargo without forwarding `-Z` flags.
+[unstable]
+cargo-lints = true
